@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-teal-900: #064e3b;
+  --color-teal-950: #022c22;
+  --color-forest-teal: #0a2e2e;
+  --color-peach: #ffdab9;
+  --color-coral: #ff7f50;
+  --color-cream: #fffdfa;
+  --color-ink: #141414;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-25%); }
+  }
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  --animate-spin-slow: spin-slow 12s linear infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-teal-950 font-sans antialiased;
+  }
+}
+
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.glass-dark {
+  @apply bg-teal-950/40 backdrop-blur-md border border-white/10 shadow-xl;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #E5E7EB;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #D1D5DB;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gradient-peach {
+  @apply bg-gradient-to-br from-coral to-peach;
+}
+
+.gradient-teal {
+  @apply bg-gradient-to-br from-teal-900 to-forest-teal;
+}
+
+.markdown-body {
+  @apply prose prose-teal max-w-none;
+}
+
+/* Recipe 1: Data Grid Styles */
+.data-row {
+  @apply border-b border-teal-900/10 transition-all duration-200 cursor-pointer hover:bg-forest-teal hover:text-peach;
+}
+
+.col-header {
+  @apply font-serif italic text-[11px] opacity-50 uppercase tracking-widest;
+}
+
+.data-value {
+  @apply font-mono tracking-tight;
+}
+
+/* Recipe 2: Editorial Styles */
+.display-title {
+  @apply font-sans text-[clamp(3rem,15vw,12rem)] leading-[0.85] tracking-[-0.04em] uppercase font-extrabold;
+}
+
+.micro-label {
+  @apply font-sans text-[10px] font-bold tracking-[0.15em] uppercase opacity-60;
+}
